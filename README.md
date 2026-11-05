@@ -1,99 +1,89 @@
 # LLM Council
 
-A Claude skill that turns one question into five expert opinions, plus a final verdict.
+Pytasz AI, czy podnieść stawkę. AI mówi, że świetny pomysł. Klasyczek.
 
-Built by [Ole Lehmann](https://x.com/itsolelehmann). Based on Andrej Karpathy's [LLM Council](https://github.com/karpathy/llm-council) methodology.
+Przy decyzji, która może Cię sporo kosztować, jedna odpowiedź to za mało. Więc ten skill robi z Twojego pytania naradę. Pięciu doradców patrzy na sprawę z pięciu stron. Potem ich odpowiedzi przechodzą ocenę. Na końcu dostajesz werdykt: co robić i od czego zacząć.
 
-Works in **Claude Code** and **Claude Cowork** (claude.ai).
+Działa w Claude Code i Claude Cowork.
 
----
+## Co to w ogóle jest
 
-## *What's GitHub?*
+Skill to zestaw instrukcji dla Claude'a do jednego konkretnego zadania. Wgrywasz go raz, a potem odpalasz jednym zdaniem.
 
-Think of GitHub as Google Drive, but for code. Instead of sharing photos and files, people use GitHub to share code and snippets like this skill. You're on a GitHub page right now.
+GitHub to taki dysk Google, tylko na kod. Właśnie na nim jesteś.
 
----
+## Jak to działa
 
-## What's a skill?
+Zanim doradcy ruszą, Claude zagląda do Twoich plików z kontekstem, na przykład CLAUDE.md. Dzięki temu doradcy wiedzą, o kim mówią.
 
-A skill is a small set of instructions you give to your AI. Think of it like a job description for a specific task. Once installed, you can trigger it with a phrase and Claude knows exactly how to handle it.
+Potem odpala całą piątkę naraz. Każdy pracuje osobno i myśli inaczej:
 
-This particular skill teaches Claude how to run a "council" for you. When you ask a hard question or face a tough decision, Claude spins up 5 different advisors who each think about it from a fundamentally different angle, peer-review each other's takes, and deliver a final synthesized answer.
+- **The Contrarian** szuka, co się wysypie.
+- **The First Principles Thinker** sprawdza, czy w ogóle zadajesz dobre pytanie.
+- **The Expansionist** patrzy, co może pójść lepiej, niż zakładasz.
+- **The Outsider** nic o Tobie nie wie i ocenia tylko to, co widzi.
+- **The Executor** pyta, co robisz w poniedziałek rano.
 
----
+Odpowiedzi trafiają do oceny bez podpisów. Oceniający nie wie, kto co napisał, więc patrzy na samą treść. Wskazuje najmocniejszą odpowiedź, największą dziurę i to, co pominęli wszyscy.
 
-## What it does
+Na końcu przewodniczący składa wszystko w jeden werdykt. Widzisz, gdzie doradcy się zgadzają, a gdzie kłócą. Dostajesz konkretną rekomendację i jeden krok do zrobienia na start.
 
-You ask one AI a question, you get one answer. That answer might be great. It might be mid. You have no way to tell because you only saw one perspective.
+## Kiedy to ma sens
 
-The council fixes this. It runs your question through 5 independent advisors, each thinking from a different angle. They review each other's work. A chairman synthesizes everything into a final recommendation that tells you where the advisors agree, where they clash, and what you should actually do.
+Kiedy pomyłka drogo kosztuje, a dobrej odpowiedzi nie znasz.
 
----
+Dobre pytania:
 
-## When to use it
+- „Warsztat za 400 zł czy kurs za 2000 zł?”
+- „Który z tych 3 pomysłów na ofertę jest najmocniejszy?”
+- „Chcę przejść z X na Y. Odbiło mi?”
+- „Oto tekst z mojej strony. Co w nim nie działa?”
+- „Zatrudnić asystenta czy najpierw zbudować automatyzację?”
 
-Good council questions:
+Słabe pytania:
 
-- "Should I launch a $97 workshop or a $497 course?"
-- "Which of these 3 positioning angles is strongest?"
-- "I'm thinking of pivoting from X to Y. Am I crazy?"
-- "Here's my landing page copy. What's weak?"
-- "Should I hire a VA or build an automation first?"
+- „Jaka jest stolica Francji?” (jest jedna poprawna odpowiedź)
+- „Napisz mi posta” (nie ma tu żadnej decyzji)
+- „Streść ten artykuł” (tu też nie)
 
-Bad council questions:
+I szczerze? Jeśli decyzja już zapadła i chcesz tylko usłyszeć, że masz rację, możesz się zdziwić.
 
-- "What's the capital of France?" (one right answer, no need for perspectives)
-- "Write me a tweet" (creation task, not a decision)
-- "Summarize this article" (processing task, not judgment)
+## Instalacja
 
-The council shines when there's genuine uncertainty and the cost of a bad call is high. If you already know the answer and just want validation, the council will likely tell you things you don't want to hear. That's the point.
+Bez terminala. Masz dwie drogi i obie działają w Claude Code i Claude Cowork.
 
----
+**Sposób 1: niech Claude zrobi to za Ciebie**
 
-## How to install it (no terminal needed)
+Otwórz nowy czat i wklej:
 
-Pick whichever option feels easier. Both work in Claude Code and Claude Cowork.
-
-### Option 1: Let Claude install it for you
-
-Open a new chat in Claude and paste this in:
-
-> Please install this Claude skill for me. The SKILL.md file lives in this GitHub repo: https://github.com/krystianbefree/claude-skills-llm-council
+> Zainstaluj mi tego skilla. Plik SKILL.md jest w tym repo na GitHubie: https://github.com/krystianbefree/claude-skills-llm-council
 >
-> Set it up so I can start using it. Walk me through anything you need from me.
+> Ustaw wszystko tak, żeby działało od razu. Przeprowadź mnie przez to, czego będziesz ode mnie potrzebować.
 
-Claude will fetch the file and put it in the right place. If it can't do it automatically (some setups need you to upload manually), it'll tell you exactly what to click.
+Claude pobierze plik i wrzuci go w odpowiednie miejsce. Jeśli nie da rady zrobić tego sam, powie Ci, co kliknąć.
 
-### Option 2: Download the file and ask Claude to set it up
+**Sposób 2: pobierz plik**
 
-1. Click [SKILL.md](./SKILL.md) at the top of this repo.
-2. Click the download button on the right side of the file view to save it to your computer.
-3. Open Claude and paste this in:
+1. Kliknij [SKILL.md](./SKILL.md) na górze tego repo.
+2. Pobierz plik przyciskiem po prawej stronie.
+3. Otwórz Claude'a i wklej:
 
-> I just downloaded a file called SKILL.md for the LLM Council skill. Can you install it for me? Walk me through wherever you need me to put it.
+> Mam pobrany plik SKILL.md ze skillem LLM Council. Zainstaluj go i przeprowadź mnie przez to krok po kroku.
 
-Claude will guide you the rest of the way.
+## Jak tego używać
 
----
+Napisz w rozmowie jedną z tych fraz:
 
-## How to use it
+- `council this`
+- `run the council on [Twoje pytanie]`
+- `pressure-test this`
+- `stress-test this`
+- `war room this`
 
-Once installed, in any Claude conversation, just say one of these:
+Frazy są wpisane w skilla po angielsku, więc tak je zostawiam. Samo pytanie zadajesz normalnie po polsku:
 
-- "council this"
-- "run the council on [your question]"
-- "pressure-test this"
-- "stress-test this"
-- "war room this"
+> council this: czy podnieść stawkę o 30%?
 
-Claude will spin up the 5 advisors, run the peer review, and deliver the chairman's verdict.
+## Skąd to jest
 
----
-
-## Credit
-
-This skill was built by [Ole Lehmann](https://x.com/itsolelehmann). Go follow him, the man cooks.
-
-The methodology is adapted from Andrej Karpathy's [LLM Council](https://github.com/karpathy/llm-council).
-
-This repo just makes it easier to share with friends who want to try it.
+Skill zbudował [Ole Lehmann](https://x.com/itsolelehmann), a metoda pochodzi z [LLM Council](https://github.com/karpathy/llm-council) Andreja Karpathy'ego. Ja dopisałem tylko polski opis, żeby łatwiej było się tym dzielić.
